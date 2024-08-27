@@ -501,8 +501,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[game name]'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
+  m_sharedMaterial: {fileID: 8944038894925846163, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -727,8 +727,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Begin Eating
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
+  m_sharedMaterial: {fileID: 8944038894925846163, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -982,8 +982,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How to eat [coming soon]
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
+  m_sharedMaterial: {fileID: 8944038894925846163, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

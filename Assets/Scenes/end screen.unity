@@ -430,8 +430,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
+  m_sharedMaterial: {fileID: 8944038894925846163, guid: b9dfca0163cc32c47b940dfd0d8a60ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -517,6 +517,7 @@ GameObject:
   - component: {fileID: 1314020708}
   - component: {fileID: 1314020707}
   - component: {fileID: 1314020706}
+  - component: {fileID: 1314020709}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -588,9 +589,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640435113}
-        m_TargetAssemblyTypeName: endscreenscript, Assembly-CSharp
-        m_MethodName: returnscene
+      - m_Target: {fileID: 1314020709}
+        m_TargetAssemblyTypeName: Main_menu.ButtonManager, Assembly-CSharp
+        m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -638,6 +639,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314020704}
   m_CullTransparentMesh: 1
+--- !u!114 &1314020709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314020704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14e59907f1786744a095e49072353ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: SampleScene
 --- !u!1 &1630536291
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,5 @@ public class endscreenscript : MonoBehaviour
     {
         EndScreenScore.text = "score: " +endscore.ToString();
     }
-    public void returnscene()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
+    
 }
