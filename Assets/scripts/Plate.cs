@@ -59,7 +59,7 @@ public class Plate : MonoBehaviour
             bool isHeld = Input.GetMouseButtonDown(0) == false;
             OnMouse(isHeld);
         }
-        else if (table.IsOnTable(transform.position) == false)
+        else if (table.IsOnTable(transform.position))
         {
             table.RemovePlate(this);
         }
