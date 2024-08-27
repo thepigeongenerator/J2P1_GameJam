@@ -38,4 +38,8 @@ public class Table : MonoBehaviour
         // TODO: currently just assume false. implementing this later
         return false;
     }
+
+    private void Start() {
+        AddPlate();
+    }
 }
