@@ -4,6 +4,7 @@ public class Plate : MonoBehaviour
     // load in the plate sprites in the order from empty to full
     [SerializeField] private Sprite[] sprites;
     private SpriteRenderer renderer;
+    private Table table;
     private uint plateFullness; // index of the sprite + indicator of how full the plate is
     private float radius;
 
@@ -45,6 +46,7 @@ public class Plate : MonoBehaviour
     // when the object is loaded
     private void Awake()
     {
+        table = FindObjectOfType<Table>();
         renderer = GetComponent<SpriteRenderer>();
         plateFullness = sprites.length - 1; // set fullness to full
 
@@ -61,6 +63,7 @@ public class Plate : MonoBehaviour
             bool isHeld = Input.GetMouseButtonDown(MouseButton.LeftMouse) == false;
             OnMouse(isHeld);
         }
+        else if (table.IsOnTable(transform.position)) {}
     }
 
     // draws the hitbox outline in the editor when the object is selected
