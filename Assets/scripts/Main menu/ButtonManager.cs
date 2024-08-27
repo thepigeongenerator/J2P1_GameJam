@@ -15,7 +15,7 @@ namespace Main_menu
             }
             else
             {
-                SceneManager.LoadScene(sceneName);
+                SceneManager.LoadScene(sceneName); 
             }
         }
     }
