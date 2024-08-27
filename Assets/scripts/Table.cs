@@ -3,6 +3,7 @@ public class Table : MonoBehaviour
 {
     [SerializeField] private Sprite plateSprite;
     [SerializeField] private Sprite[] foodSprites;
+    private System.Random rand;
     private int plateCount = 0;
 
     public int PlateCount { get => plateCount; }
@@ -14,8 +15,8 @@ public class Table : MonoBehaviour
         plateObj.transform.position = Vector3.zero;
 
         // add sprite renderer
-        var render = plateObj.AddComponent<SpriteRenderer>();
-        render.sprite = plateSprite;
+        var plateRemderer = plateObj.AddComponent<SpriteRenderer>();
+        plateRemderer.sprite = plateSprite;
 
         // add plate
         var plate = plateObj.AddComponent<Plate>();
@@ -23,6 +24,10 @@ public class Table : MonoBehaviour
 
         GameObject foodObj = new("Food");
         foodObj.transform.SetParent(plateObj.transform);
+        var foodRenderer = foodObj.AddComponent<SpriteRenderer>();
+        int spriteIndex = rand.Next(foodSprites.Length);
+        foodRenderer.sprite = foodSprites[spriteIndex];
+
         plateCount++;
     }
 
@@ -39,7 +44,16 @@ public class Table : MonoBehaviour
         return false;
     }
 
-    private void Start() {
+    private void Awake()
+    {
+        if (Debug.isDebugBuild)
+            rand = new System.Random(0);
+        else
+            rand = new System.Random();
+    }
+
+    private void Start()
+    {
         AddPlate();
     }
 }
