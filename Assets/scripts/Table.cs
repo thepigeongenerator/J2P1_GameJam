@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class Table : MonoBehaviour
 {
@@ -5,6 +6,7 @@ public class Table : MonoBehaviour
     [SerializeField] private Sprite[] foodSprites;
     private System.Random rand;
     private int plateCount = 0;
+    private float padding;
     private float width = 20;
     private float height = 10;
 
@@ -18,7 +20,9 @@ public class Table : MonoBehaviour
     public void AddPlate()
     {
         GameObject plateObj = new($"Plate {plateCount}");
-        plateObj.transform.position = Vector3.zero;
+        plateObj.transform.position = new Vector2(
+            Random.Range(TablePos.x + padding, TablePos.x + width - padding),
+            Random.Range(TablePos.y + padding, TablePos.y + height - padding));
 
         // add sprite plate renderer
         var plateRemderer = plateObj.AddComponent<SpriteRenderer>();
@@ -51,25 +55,30 @@ public class Table : MonoBehaviour
     public bool IsOnTable(Vector2 pos)
     {
         return
-            TablePos.x > pos.x &&
-            TablePos.y > pos.y &&
-            TablePos.x + width < pos.x &&
-            TablePos.y + height < pos.y;
+            TablePos.x + padding > pos.x - padding &&
+            TablePos.y + padding > pos.y - padding &&
+            TablePos.x + padding + width < pos.x - padding &&
+            TablePos.y + padding + height < pos.y - padding;
     }
 
     private void Awake()
     {
+        // set a random seed on debug builds, otherwise use the system time as a seed.
         if (Debug.isDebugBuild)
             rand = new System.Random(0);
         else
             rand = new System.Random();
+
+        // calculate the plate radius and set it as padding
+        padding = plateSprite.bounds.size.y / 2.0F;
     }
 
     // draws the table outline in the editor when the object is selected
     private void OnDrawGizmosSelected()
     {
+        float plateSize = plateSprite.bounds.size.y;
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0));
+        Gizmos.DrawWireCube(transform.position, new Vector3(width - plateSize, height - plateSize, 0));
     }
 
     // DEBUG: remove in final
