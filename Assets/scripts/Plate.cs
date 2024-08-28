@@ -2,28 +2,17 @@ using System;
 using UnityEngine;
 public class Plate : MonoBehaviour
 {
+    public Table table;
+    public GameObject food;
+    private bool released = false;
     private bool isEmpty = false;
     private float radius;
-    public GameObject food;
-    public Table table;
 
 
     // called when the mouse is held or clicked
-    private void OnMouse(Vector2 mousePos, bool isHeld)
+    private void OnMouse(Vector2 mousePos)
     {
-        // if the plate is empty, move the plate to the mouse's position
-        if (isEmpty == true)
-        {
-            transform.position = mousePos;
-            return;
-        }
 
-        // return if the mouse is held at this point
-        if (isHeld) return;
-
-        //otherwise decrease the fullness and update the sprite
-        isEmpty = true;
-        Destroy(food);
     }
 
     // checks whether a position falls on the plate
@@ -54,15 +43,26 @@ public class Plate : MonoBehaviour
     // called on every frame upate
     private void Update()
     {
+        bool mousePressed = Input.GetMouseButton(0);
+        bool mouseDown = Input.GetMouseButtonDown(0);
+        bool mouseUp = Input.GetMouseButtonUp(0);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButton(0) && IsOnPlate(mousePos))
+
+        if (isEmpty == false && mouseDown)
         {
-            bool isHeld = Input.GetMouseButtonDown(0) == false;
-            OnMouse(mousePos, isHeld);
+            // make the sprite empty if the plate is clicked
+            isEmpty = true;
+            Destroy(food);
         }
-        else if (table.IsOnTable(transform.position))
+        else if (isEmpty == true && released == true && mousePressed)
         {
-            table.RemovePlate(this);
+            // move the plate to the mouse's position when it is being held (after initially being released)
+            transform.position = mousePos;
+        }
+        else if (isEmpty == true && mouseUp)
+        {
+            // set the mouse to be released
+            released = true;
         }
     }
 
