@@ -15,12 +15,8 @@ public class aantalborden : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
     void Update()
     {
-        plates.text = "plates:" + PlatesCount.ToString();
-        timer.text = "Time: " + TimerCount.ToString();
         if (Input.GetKeyUp(KeyCode.Space))
         {
             PlatesCount++;
@@ -29,6 +25,12 @@ public class aantalborden : MonoBehaviour
         {
             PlatesCount--;
         }
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        plates.text = "plates:" + PlatesCount.ToString();
+        timer.text = "Time: " + TimerCount.ToString();
         if (PlatesCount >= 10)
         {
             timer.enabled = true;
@@ -38,7 +40,7 @@ public class aantalborden : MonoBehaviour
                 Invoke("WaitTimeTimer", 1);
             }
         }
-        if(PlatesCount < 10) 
+        if (PlatesCount < 10)
         {
             TimerCount = 3;
             timer.enabled = false;
