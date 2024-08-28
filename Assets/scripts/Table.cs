@@ -53,7 +53,9 @@ public class Table : MonoBehaviour
         foodRenderer.sprite = foodSprites[spriteIndex];
 
         // add the plate at the end of the list.
-        plates.AddLast(plate);
+        plates.AddFirst(plate);
+        UpdatePlateDepth();
+        transform.position = new Vector3(transform.position.x, transform.position.y, PlateCount); // make sure the table stays behind the plates. :3
     }
 
     // removes a plate
@@ -72,6 +74,18 @@ public class Table : MonoBehaviour
             TablePos.y < pos.y &&
             TablePos.x + width > pos.x &&
             TablePos.y + height > pos.y;
+    }
+
+    // update plate depth (wow, the inefficiency, but unity does unity, I guess)
+    private void UpdatePlateDepth()
+    {
+        int i = 0;
+        foreach (Plate p in plates)
+        {
+            if (p.Depth == i) break; // assuming the rest is sorted when depths lines up.
+            p.SetDepth(i);
+            i++;
+        }
     }
 
     // called when the script is being loaded
@@ -157,15 +171,7 @@ public class Table : MonoBehaviour
                 // put this plate above the other ones
                 plates.Remove(plate);
                 plates.AddFirst(plate);
-
-                // update plate depth (wow, the inefficiency, but unity does unity, I guess)
-                int i = 0;
-                foreach (Plate p in plates)
-                {
-                    if (p.Depth == i) break; // assuming the rest is sorted when depths lines up.
-                    p.SetDepth(i);
-                    i++;
-                }
+                UpdatePlateDepth();
 
                 // no need to check further
                 break;
