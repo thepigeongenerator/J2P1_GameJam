@@ -19,7 +19,7 @@ public class aantalborden : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        plates.text = "amount of plates:" + PlatesCount.ToString();
+        plates.text = "plates:" + PlatesCount.ToString();
         timer.text = "Time: " + TimerCount.ToString();
         if (Input.GetKeyUp(KeyCode.Space))
         {
