@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 0a04abf876174cf47a77cd496c067899
+guid: 45b158841d6291040a1ed430fd3d1cdd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 248261998128863110
-    second: Sprite-table 1_0
+      213: -461220001916099152
+    second: Sprite-table_0
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -80,6 +80,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -92,19 +93,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-table 1_0
+      name: Sprite-table_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 62
+        y: 50
         width: 256
-        height: 131
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68713b1d8f0027300800000000000000
-      internalID: 248261998128863110
+      spriteID: 0b56c761ada6999f0800000000000000
+      internalID: -461220001916099152
       vertices: []
       indices: 
       edges: []
@@ -129,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite-table 1_0: 248261998128863110
+      Sprite-table_0: -461220001916099152
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
