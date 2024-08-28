@@ -19,14 +19,15 @@ public class Table : MonoBehaviour
 
     public void AddPlate()
     {
+        // spawn a plate at a random position on the table
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = new Vector2(
             Random.Range(TablePos.x + padding, TablePos.x + width - padding),
             Random.Range(TablePos.y + padding, TablePos.y + height - padding));
 
         // add sprite plate renderer
-        var plateRemderer = plateObj.AddComponent<SpriteRenderer>();
-        plateRemderer.sprite = plateSprite;
+        var plateRenderer = plateObj.AddComponent<SpriteRenderer>();
+        plateRenderer.sprite = plateSprite;
 
         // add plate
         var plate = plateObj.AddComponent<Plate>();
@@ -35,6 +36,7 @@ public class Table : MonoBehaviour
         // add food
         plate.food = new("Food");
         plate.food.transform.SetParent(plateObj.transform);
+        plate.food.transform.position = plate.transform.position;
 
         // add food sprite renderer
         var foodRenderer = plate.food.AddComponent<SpriteRenderer>();
