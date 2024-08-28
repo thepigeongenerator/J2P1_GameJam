@@ -4,6 +4,7 @@ public class Table : MonoBehaviour
     [SerializeField] private Sprite plateSprite;
     [SerializeField] private Sprite[] foodSprites;
     private System.Random rand;
+    private Score score;
     private int plateCount = 0;
     private float plateDiameter;
     private float width;
@@ -53,6 +54,7 @@ public class Table : MonoBehaviour
     {
         Destroy(plate.gameObject);
         plateCount--;
+        score.ScorePlus();
     }
 
     // checks whether the position falls on the table
@@ -72,6 +74,8 @@ public class Table : MonoBehaviour
             rand = new System.Random(0);
         else
             rand = new System.Random();
+
+        score = FindObjectOfType<Score>();
 
         // get the table's width and height
         var render = GetComponent<SpriteRenderer>();
