@@ -54,7 +54,6 @@ public class Table : MonoBehaviour
 
         // add the plate at the end of the list.
         plates.AddLast(plate);
-        transform.position = new Vector3(transform.position.x, transform.position.y, PlateCount);
     }
 
     // removes a plate
@@ -137,9 +136,10 @@ public class Table : MonoBehaviour
         // at this point we have no use if the mouse is being held
         if (mouseDown == false) return;
 
-        // loop through the plates, the first one that shows up will be moved up in the list and the held plate
+        // loop through the plates, the first one that shows up will be emptied or moved up in the list and the held plate if already empty
         foreach (Plate plate in plates)
         {
+            // check if the mouse position falls on the plate
             if (plate.IsOnPlate(mousePos))
             {
                 if (plate.IsEmpty == false)

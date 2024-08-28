@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 public class Plate : MonoBehaviour
 {
-    public Table table;
-    public GameObject food;
-    private bool isEmpty = false;
-    private float radius;
-    private int depth;
+    public Table table;             // the table that the plate is on
+    public GameObject food;         // food gameObject child
+    private bool isEmpty = false;   // whether the plate is empty
+    private float radius;           // radius of the plate to check whether a point falls on it, is set by the texture's height
+    private int depth;              // render depth of the plate. Is set to the Z value.
 
     public bool IsEmpty => isEmpty;
     public int Depth => depth;
