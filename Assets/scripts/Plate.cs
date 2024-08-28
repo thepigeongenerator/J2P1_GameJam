@@ -4,7 +4,7 @@ public class Plate : MonoBehaviour
 {
     public Table table;
     public GameObject food;
-    private bool released = false;
+    private bool isHeld = false;
     private bool isEmpty = false;
     private float radius;
 
@@ -42,24 +42,31 @@ public class Plate : MonoBehaviour
         bool mouseUp = Input.GetMouseButtonUp(0);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (isEmpty == false && mouseDown)
+        if (mouseDown && IsOnPlate(mousePos))
         {
+            // if the plate is empty, set the plate to be held
+            if (isEmpty)
+            {
+                isHeld = true;
+                return;
+            }
             // make the sprite empty if the plate is clicked
             isEmpty = true;
             Destroy(food);
         }
-        else if (isEmpty == true && released == true && mousePressed)
+        else if (isEmpty == true && isHeld == true && mousePressed)
         {
-            // move the plate to the mouse's position when it is being held (after initially being released)
+            // move the plate to the mouse's position when it is being held
             transform.position = mousePos;
         }
         else if (isEmpty == true && mouseUp)
         {
-            // set the mouse to be released
-            released = true;
+            // set the mouse to be no longer held
+            isHeld = false;
         }
         else if (table.IsOnTable(transform.position))
         {
+            // remove the plate if
             table.RemovePlate(this);
         }
     }
