@@ -8,11 +8,15 @@ public class Table : MonoBehaviour
     private float width = 20;
     private float height = 10;
 
-    public int PlateCount { get => plateCount; }
+    public int PlateCount => plateCount;
+
+    // the table position changed to the bottom left conrner, don't call before awake
+    private Vector2 TablePos => new(
+            transform.position.x - (width / 2),
+            transform.position.y - (height / 2));
 
     public void AddPlate()
     {
-        // TODO: select a random X and Y position on the surface of the table (add padding)
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = Vector3.zero;
 
@@ -46,8 +50,11 @@ public class Table : MonoBehaviour
     // checks whether the position falls on the table
     public bool IsOnTable(Vector2 pos)
     {
-        // TODO: currently just assume false. implementing this later
-        return false;
+        return
+            TablePos.x > pos.x &&
+            TablePos.y > pos.y &&
+            TablePos.x + width < pos.x &&
+            TablePos.y + height < pos.y;
     }
 
     private void Awake()
@@ -59,7 +66,8 @@ public class Table : MonoBehaviour
     }
 
     // draws the table outline in the editor when the object is selected
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmosSelected()
+    {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0));
     }
