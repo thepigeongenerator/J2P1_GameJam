@@ -64,6 +64,10 @@ public class Plate : MonoBehaviour
             // set the mouse to be released
             released = true;
         }
+        else if (table.IsOnTable(transform.position))
+        {
+            table.RemovePlate(this);
+        }
     }
 
     // draws the hitbox outline in the editor when the object is selected
