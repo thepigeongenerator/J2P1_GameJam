@@ -4,16 +4,10 @@ public class Plate : MonoBehaviour
 {
     public Table table;
     public GameObject food;
-    private bool released = false;
+    private bool isHeld = false;
     private bool isEmpty = false;
     private float radius;
 
-
-    // called when the mouse is held or clicked
-    private void OnMouse(Vector2 mousePos)
-    {
-
-    }
 
     // checks whether a position falls on the plate
     private bool IsOnPlate(Vector2 pos)
@@ -48,24 +42,31 @@ public class Plate : MonoBehaviour
         bool mouseUp = Input.GetMouseButtonUp(0);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (isEmpty == false && mouseDown)
+        if (mouseDown && IsOnPlate(mousePos))
         {
+            if (isEmpty)
+            {
+                // if the plate is empty, set the plate to be held
+                isHeld = true;
+                return;
+            }
             // make the sprite empty if the plate is clicked
             isEmpty = true;
             Destroy(food);
         }
-        else if (isEmpty == true && released == true && mousePressed)
+        else if (isEmpty == true && isHeld == true && mousePressed)
         {
-            // move the plate to the mouse's position when it is being held (after initially being released)
+            // move the plate to the mouse's position while it is being held and empty
             transform.position = mousePos;
         }
-        else if (isEmpty == true && mouseUp)
+        else if (isHeld == true && mouseUp)
         {
-            // set the mouse to be released
-            released = true;
+            // make the mouse no longer held when the mouse is released
+            isHeld = false;
         }
-        else if (table.IsOnTable(transform.position))
+        else if (table.IsOnTable(transform.position) == false)
         {
+            // remove the plate if
             table.RemovePlate(this);
         }
     }

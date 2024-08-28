@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 public class Table : MonoBehaviour
 {
@@ -19,11 +18,11 @@ public class Table : MonoBehaviour
 
     public void AddPlate()
     {
-        // spawn a plate at a random position on the table
+        // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = new Vector2(
-            Random.Range(TablePos.x + padding, TablePos.x + width - padding),
-            Random.Range(TablePos.y + padding, TablePos.y + height - padding));
+            Random.Range(TablePos.x + (padding * 2), TablePos.x + width - (padding * 2)),
+            Random.Range(TablePos.y + (padding * 2), TablePos.y + height - (padding * 2)));
 
         // add sprite plate renderer
         var plateRenderer = plateObj.AddComponent<SpriteRenderer>();
@@ -36,7 +35,10 @@ public class Table : MonoBehaviour
         // add food
         plate.food = new("Food");
         plate.food.transform.SetParent(plateObj.transform);
-        plate.food.transform.position = plate.transform.position;
+        plate.food.transform.position = new(
+            plate.transform.position.x,
+            plate.transform.position.y,
+            plate.transform.position.z - 1);
 
         // add food sprite renderer
         var foodRenderer = plate.food.AddComponent<SpriteRenderer>();
@@ -57,10 +59,10 @@ public class Table : MonoBehaviour
     public bool IsOnTable(Vector2 pos)
     {
         return
-            TablePos.x + padding > pos.x - padding &&
-            TablePos.y + padding > pos.y - padding &&
-            TablePos.x + padding + width < pos.x - padding &&
-            TablePos.y + padding + height < pos.y - padding;
+            TablePos.x + padding < pos.x - padding &&
+            TablePos.y + padding < pos.y - padding &&
+            TablePos.x + padding + width > pos.x - padding &&
+            TablePos.y + padding + height > pos.y - padding;
     }
 
     private void Awake()
@@ -71,7 +73,7 @@ public class Table : MonoBehaviour
         else
             rand = new System.Random();
 
-        // calculate the plate radius and set it as padding
+        // calculate set the plate range as the padding
         padding = plateSprite.bounds.size.y / 2.0F;
     }
 
@@ -86,6 +88,9 @@ public class Table : MonoBehaviour
     // DEBUG: remove in final
     private void Start()
     {
-        AddPlate();
+        for (int i = 0; i < 50; i++)
+        {
+            AddPlate();
+        }
     }
 }
