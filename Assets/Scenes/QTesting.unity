@@ -243,9 +243,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952390c5b50bbfb208ed065780f84110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plateSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  plateSprite: {fileID: -1161129717, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
   foodSprites:
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -177732418, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -1371559204, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -779873514, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -1944140059, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 1702099643, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 1183915884, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 640616005, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 161890153, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -1665033630, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -722269087, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -593292635, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 98535097, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: -815669504, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
+  - {fileID: 1774839598, guid: f0524b57cc1e3d0aeb90b1483fbc3d68, type: 3}
 --- !u!4 &1224226449
 Transform:
   m_ObjectHideFlags: 0
