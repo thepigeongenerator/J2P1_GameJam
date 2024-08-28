@@ -70,8 +70,8 @@ public class Table : MonoBehaviour
         else
             rand = new System.Random();
 
-        // calculate the plate radius and set it as padding
-        padding = plateSprite.bounds.size.y / 2.0F;
+        // calculate set the plate diameter as the padding because the plate's origin is (0.5, 0.5)
+        padding = plateSprite.bounds.size.y;
     }
 
     // draws the table outline in the editor when the object is selected
