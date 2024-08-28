@@ -26,10 +26,15 @@ public class Table : MonoBehaviour
     {
         // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
         GameObject plateObj = new($"Plate {PlateCount}");
-        plateObj.transform.position = new Vector2(
-            Random.Range(TablePos.x + (plateDiameter * 2), TablePos.x + width - (plateDiameter * 2)),
-            Random.Range(TablePos.y + (plateDiameter * 2), TablePos.y + height - (plateDiameter * 2)));
-
+        {
+            float minX = TablePos.x + (plateDiameter * 2);
+            float minY = TablePos.y + (plateDiameter * 2);
+            float maxX = TablePos.x + width - (plateDiameter * 2);
+            float maxY = TablePos.y + height - (plateDiameter * 2);
+            plateObj.transform.position = new Vector2(
+                (float)rand.NextDouble() * (maxX - minX) + minX,
+                (float)rand.NextDouble() * (maxY - minY) + minY);
+        }
         // add sprite plate renderer
         var plateRenderer = plateObj.AddComponent<SpriteRenderer>();
         plateRenderer.sprite = plateSprite;
@@ -93,7 +98,7 @@ public class Table : MonoBehaviour
     {
         // set a random seed on debug builds, otherwise use the system time as a seed.
         if (Debug.isDebugBuild)
-            rand = new System.Random(0);
+            rand = new System.Random(1);
         else
             rand = new System.Random();
 
