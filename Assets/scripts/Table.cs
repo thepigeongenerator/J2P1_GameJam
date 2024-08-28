@@ -56,10 +56,10 @@ public class Table : MonoBehaviour
     public bool IsOnTable(Vector2 pos)
     {
         return
-            TablePos.x + padding > pos.x - padding &&
-            TablePos.y + padding > pos.y - padding &&
-            TablePos.x + padding + width < pos.x - padding &&
-            TablePos.y + padding + height < pos.y - padding;
+            TablePos.x + padding < pos.x - padding &&
+            TablePos.y + padding < pos.y - padding &&
+            TablePos.x + padding + width > pos.x - padding &&
+            TablePos.y + padding + height > pos.y - padding;
     }
 
     private void Awake()
