@@ -4,8 +4,9 @@ public class Table : MonoBehaviour
     [SerializeField] private Sprite plateSprite;
     [SerializeField] private Sprite[] foodSprites;
     private System.Random rand;
+    private Score score;
     private int plateCount = 0;
-    private float padding;
+    private float plateDiameter;
     private float width;
     private float height;
 
@@ -21,8 +22,8 @@ public class Table : MonoBehaviour
         // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = new Vector2(
-            Random.Range(TablePos.x + (padding * 2), TablePos.x + width - (padding * 2)),
-            Random.Range(TablePos.y + (padding * 2), TablePos.y + height - (padding * 2)));
+            Random.Range(TablePos.x + (plateDiameter * 2), TablePos.x + width - (plateDiameter * 2)),
+            Random.Range(TablePos.y + (plateDiameter * 2), TablePos.y + height - (plateDiameter * 2)));
 
         // add sprite plate renderer
         var plateRenderer = plateObj.AddComponent<SpriteRenderer>();
@@ -53,16 +54,17 @@ public class Table : MonoBehaviour
     {
         Destroy(plate.gameObject);
         plateCount--;
+        score.ScorePlus();
     }
 
     // checks whether the position falls on the table
     public bool IsOnTable(Vector2 pos)
     {
         return
-            TablePos.x + padding < pos.x - padding &&
-            TablePos.y + padding < pos.y - padding &&
-            TablePos.x + padding + width > pos.x - padding &&
-            TablePos.y + padding + height > pos.y - padding;
+            TablePos.x < pos.x &&
+            TablePos.y < pos.y &&
+            TablePos.x + width > pos.x &&
+            TablePos.y + height > pos.y;
     }
 
     private void Awake()
@@ -73,27 +75,26 @@ public class Table : MonoBehaviour
         else
             rand = new System.Random();
 
+        score = FindObjectOfType<Score>();
+
         // get the table's width and height
         var render = GetComponent<SpriteRenderer>();
         width = render.sprite.bounds.size.x;
         height = render.sprite.bounds.size.y;
 
-        // calculate set the plate range as the padding
-        padding = plateSprite.bounds.size.y / 2.0F;
+        // get the plate's diameter for plate spawning
+        plateDiameter = plateSprite.bounds.size.y / 2.0F;
     }
 
     // draws the table outline in the editor when the object is selected
     private void OnDrawGizmosSelected()
     {
-        float plateSize = plateSprite.bounds.size.y;
-
-        // get the table's width and height
         var render = GetComponent<SpriteRenderer>();
-        float w = render.sprite.bounds.size.x;
-        float h = render.sprite.bounds.size.y;
+        float w = render.size.x;
+        float h = render.size.y;
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, new Vector3(w - plateSize, h - plateSize, 0));
+        Gizmos.DrawWireCube(transform.position, new Vector3(w, h, 0));
     }
 
     // DEBUG: remove in final
