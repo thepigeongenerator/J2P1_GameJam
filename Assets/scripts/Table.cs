@@ -5,6 +5,8 @@ public class Table : MonoBehaviour
     [SerializeField] private Sprite[] foodSprites;
     private System.Random rand;
     private int plateCount = 0;
+    private float width = 20;
+    private float height = 10;
 
     public int PlateCount { get => plateCount; }
 
@@ -14,7 +16,7 @@ public class Table : MonoBehaviour
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = Vector3.zero;
 
-        // add sprite renderer
+        // add sprite plate renderer
         var plateRemderer = plateObj.AddComponent<SpriteRenderer>();
         plateRemderer.sprite = plateSprite;
 
@@ -22,11 +24,15 @@ public class Table : MonoBehaviour
         var plate = plateObj.AddComponent<Plate>();
         plate.table = this;
 
-        GameObject foodObj = new("Food");
-        foodObj.transform.SetParent(plateObj.transform);
-        var foodRenderer = foodObj.AddComponent<SpriteRenderer>();
+        // add food
+        plate.food = new("Food");
+        plate.food.transform.SetParent(plateObj.transform);
+
+        // add food sprite renderer
+        var foodRenderer = plate.food.AddComponent<SpriteRenderer>();
         int spriteIndex = rand.Next(foodSprites.Length);
         foodRenderer.sprite = foodSprites[spriteIndex];
+
 
         plateCount++;
     }
@@ -52,6 +58,13 @@ public class Table : MonoBehaviour
             rand = new System.Random();
     }
 
+    // draws the table outline in the editor when the object is selected
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 0));
+    }
+
+    // DEBUG: remove in final
     private void Start()
     {
         AddPlate();
