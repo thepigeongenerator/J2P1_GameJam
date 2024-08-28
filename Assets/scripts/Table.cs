@@ -85,6 +85,9 @@ public class Table : MonoBehaviour
     // DEBUG: remove in final
     private void Start()
     {
-        AddPlate();
+        for (int i = 0; i < 50; i++)
+        {
+            AddPlate();
+        }
     }
 }
