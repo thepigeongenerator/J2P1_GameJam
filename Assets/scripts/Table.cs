@@ -26,12 +26,13 @@ public class Table : MonoBehaviour
     public void AddPlate()
     {
         // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
-        GameObject plateObj = new($"Plate {PlateCount}");
+        GameObject plateObj = new($"Plate");
         {
             float minX = TablePos.x + (plateDiameter * 2);
             float minY = TablePos.y + (plateDiameter * 2);
             float maxX = TablePos.x + width - (plateDiameter * 2);
             float maxY = TablePos.y + height - (plateDiameter * 2);
+            plateObj.transform.SetParent(transform);
             plateObj.transform.position = new Vector2(
                 (float)rand.NextDouble() * (maxX - minX) + minX,
                 (float)rand.NextDouble() * (maxY - minY) + minY);
