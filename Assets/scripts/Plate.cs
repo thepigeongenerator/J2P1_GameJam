@@ -9,12 +9,12 @@ public class Plate : MonoBehaviour
 
 
     // called when the mouse is held or clicked
-    private void OnMouse(bool isHeld)
+    private void OnMouse(Vector2 mousePos, bool isHeld)
     {
         // if the plate is empty, move the plate to the mouse's position
         if (isEmpty == true)
         {
-            transform.position = Input.mousePosition;
+            transform.position = mousePos;
             return;
         }
 
@@ -37,7 +37,7 @@ public class Plate : MonoBehaviour
         // normalize a copy which will be a point on a circle
         Vector2 platePos = rpos;
         platePos.Normalize();
-        rpos *= radius;
+        platePos *= radius;
 
         return rpos.x < platePos.x && rpos.y < platePos.y;
     }
@@ -54,10 +54,11 @@ public class Plate : MonoBehaviour
     // called on every frame upate
     private void Update()
     {
-        if (Input.GetMouseButton(0) && IsOnPlate(Input.mousePosition))
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButton(0) && IsOnPlate(mousePos))
         {
             bool isHeld = Input.GetMouseButtonDown(0) == false;
-            OnMouse(isHeld);
+            OnMouse(mousePos, isHeld);
         }
         else if (table.IsOnTable(transform.position))
         {
