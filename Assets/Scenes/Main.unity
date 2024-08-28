@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plates: {fileID: 1047965323}
   timer: {fileID: 743642728}
-  table: {fileID: 0}
+  table: {fileID: 1600025085}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
