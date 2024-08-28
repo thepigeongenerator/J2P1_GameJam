@@ -14,7 +14,7 @@ public class aantalborden : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        timer.enabled = false;
     }
     void Update()
     {
@@ -32,19 +32,23 @@ public class aantalborden : MonoBehaviour
     {
         plates.text = "plates:" + PlatesCount.ToString();
         timer.text = "Time: " + TimerCount.ToString();
-        if (table.PlateCount >= 10)
+        if (table.PlateCount != 0)
         {
-            timer.enabled = true;
-            if (TimerOn == false)
+            if (table.PlateCount >= 10)
             {
-                TimerOn = true;
-                Invoke("WaitTimeTimer", 1);
+
+                if (TimerOn == false)
+                {
+                    timer.enabled = true;
+                    TimerOn = true;
+                    Invoke("WaitTimeTimer", 1);
+                }
             }
-        }
-        if (table.PlateCount < 10)
-        {
-            TimerCount = 3;
-            timer.enabled = false;
+            if (table.PlateCount < 10)
+            {
+                TimerCount = 3;
+                timer.enabled = false;
+            }
         }
     }
     void WaitTimeTimer()
