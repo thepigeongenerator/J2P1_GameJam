@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class aantalborden : MonoBehaviour
 {
@@ -30,11 +31,11 @@ public class aantalborden : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        plates.text = "plates:" + PlatesCount.ToString();
+        plates.text = "plates:" + table.PlateCount.ToString();
         timer.text = "Time: " + TimerCount.ToString();
         if (table.PlateCount != 0)
         {
-            if (table.PlateCount >= 10)
+            if (table.PlateCount >= 51)
             {
 
                 if (TimerOn == false)
@@ -57,7 +58,7 @@ public class aantalborden : MonoBehaviour
         TimerCount--;
         if (TimerCount == 0)
         {
-            TimerOn = true;
+            SceneManager.LoadScene("End Screen");
         }
     }
 }
