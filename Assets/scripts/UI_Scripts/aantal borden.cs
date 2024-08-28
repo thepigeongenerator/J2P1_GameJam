@@ -7,6 +7,7 @@ public class aantalborden : MonoBehaviour
 {
     [SerializeField] TMP_Text plates;
     [SerializeField] TMP_Text timer;
+    [SerializeField] Table table;
     int PlatesCount;
     int TimerCount = 3;
     bool TimerOn = false;
@@ -31,7 +32,7 @@ public class aantalborden : MonoBehaviour
     {
         plates.text = "plates:" + PlatesCount.ToString();
         timer.text = "Time: " + TimerCount.ToString();
-        if (PlatesCount >= 10)
+        if (table.PlateCount >= 10)
         {
             timer.enabled = true;
             if (TimerOn == false)
@@ -40,7 +41,7 @@ public class aantalborden : MonoBehaviour
                 Invoke("WaitTimeTimer", 1);
             }
         }
-        if (PlatesCount < 10)
+        if (table.PlateCount < 10)
         {
             TimerCount = 3;
             timer.enabled = false;
