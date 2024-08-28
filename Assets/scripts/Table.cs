@@ -22,6 +22,7 @@ public class Table : MonoBehaviour
             transform.position.y - (height / 2));
 
     // adds a plate
+    [ContextMenu("add plate")]
     public void AddPlate()
     {
         // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
@@ -198,7 +199,7 @@ public class Table : MonoBehaviour
     // DEBUG: remove in final
     private void Start()
     {
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 3; i++)
         {
             AddPlate();
         }
