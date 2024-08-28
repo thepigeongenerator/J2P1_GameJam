@@ -64,7 +64,7 @@ public class Plate : MonoBehaviour
             // make the mouse no longer held when the mouse is released
             isHeld = false;
         }
-        else if (table.IsOnTable(transform.position))
+        else if (table.IsOnTable(transform.position) == false)
         {
             // remove the plate if
             table.RemovePlate(this);

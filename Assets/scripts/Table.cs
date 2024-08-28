@@ -18,11 +18,11 @@ public class Table : MonoBehaviour
 
     public void AddPlate()
     {
-        // spawn a plate at a random position on the table
+        // spawn a plate at a random position on the table, padding * 2  ecause the plate's origin is (0.5, 0.5)
         GameObject plateObj = new($"Plate {plateCount}");
         plateObj.transform.position = new Vector2(
-            Random.Range(TablePos.x + padding, TablePos.x + width - padding),
-            Random.Range(TablePos.y + padding, TablePos.y + height - padding));
+            Random.Range(TablePos.x + (padding * 2), TablePos.x + width - (padding * 2)),
+            Random.Range(TablePos.y + (padding * 2), TablePos.y + height - (padding * 2)));
 
         // add sprite plate renderer
         var plateRenderer = plateObj.AddComponent<SpriteRenderer>();
@@ -70,8 +70,8 @@ public class Table : MonoBehaviour
         else
             rand = new System.Random();
 
-        // calculate set the plate diameter as the padding because the plate's origin is (0.5, 0.5)
-        padding = plateSprite.bounds.size.y;
+        // calculate set the plate range as the padding
+        padding = plateSprite.bounds.size.y / 2.0F;
     }
 
     // draws the table outline in the editor when the object is selected
