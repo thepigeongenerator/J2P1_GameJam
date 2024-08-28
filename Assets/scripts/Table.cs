@@ -6,8 +6,8 @@ public class Table : MonoBehaviour
     private System.Random rand;
     private int plateCount = 0;
     private float padding;
-    private float width = 20;
-    private float height = 10;
+    private float width;
+    private float height;
 
     public int PlateCount => plateCount;
 
@@ -73,6 +73,11 @@ public class Table : MonoBehaviour
         else
             rand = new System.Random();
 
+        // get the table's width and height
+        var render = GetComponent<SpriteRenderer>();
+        width = render.sprite.bounds.size.x;
+        height = render.sprite.bounds.size.y;
+
         // calculate set the plate range as the padding
         padding = plateSprite.bounds.size.y / 2.0F;
     }
@@ -81,8 +86,14 @@ public class Table : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         float plateSize = plateSprite.bounds.size.y;
+
+        // get the table's width and height
+        var render = GetComponent<SpriteRenderer>();
+        float w = render.sprite.bounds.size.x;
+        float h = render.sprite.bounds.size.y;
+
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, new Vector3(width - plateSize, height - plateSize, 0));
+        Gizmos.DrawWireCube(transform.position, new Vector3(w - plateSize, h - plateSize, 0));
     }
 
     // DEBUG: remove in final
