@@ -35,7 +35,10 @@ public class Table : MonoBehaviour
         // add food
         plate.food = new("Food");
         plate.food.transform.SetParent(plateObj.transform);
-        plate.food.transform.position = plate.transform.position;
+        plate.food.transform.position = new(
+            plate.transform.position.x,
+            plate.transform.position.y,
+            plate.transform.position.z - 1);
 
         // add food sprite renderer
         var foodRenderer = plate.food.AddComponent<SpriteRenderer>();
