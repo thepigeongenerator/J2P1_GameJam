@@ -6,8 +6,10 @@ public class Plate : MonoBehaviour
     public GameObject food;
     private bool isEmpty = false;
     private float radius;
+    private int depth;
 
     public bool IsEmpty => isEmpty;
+    public int Depth => depth;
 
     // checks whether a position falls on the plate
     public bool IsOnPlate(Vector2 pos)
@@ -33,6 +35,13 @@ public class Plate : MonoBehaviour
         // destroy the food object and remove the reference to it.
         Destroy(food);
         food = null;
+    }
+
+    // for setting the rendering depth of the plate
+    public void SetDepth(int depth)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, depth);
+        this.depth = depth;
     }
 
     // when the object is loaded

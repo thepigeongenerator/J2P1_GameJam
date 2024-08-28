@@ -37,6 +37,7 @@ public class Table : MonoBehaviour
         // add plate
         var plate = plateObj.AddComponent<Plate>();
         plate.table = this;
+        plate.SetDepth(PlateCount);
 
         // add food
         plate.food = new("Food");
@@ -44,15 +45,16 @@ public class Table : MonoBehaviour
         plate.food.transform.position = new(
             plate.transform.position.x,
             plate.transform.position.y,
-            plate.transform.position.z - 1);
+            plate.transform.position.z - 0.5F); // subtract 0.5 to have the food render above the plate
 
         // add food sprite renderer
         var foodRenderer = plate.food.AddComponent<SpriteRenderer>();
         int spriteIndex = rand.Next(foodSprites.Length);
         foodRenderer.sprite = foodSprites[spriteIndex];
 
-        // add the plate at the top of the list.
-        plates.AddFirst(plate);
+        // add the plate at the end of the list.
+        plates.AddLast(plate);
+        transform.position = new Vector3(transform.position.x, transform.position.y, PlateCount);
     }
 
     // removes a plate
@@ -150,10 +152,19 @@ public class Table : MonoBehaviour
                     // make this plate the new held plate and update the position
                     heldPlate = plate;
                     plate.transform.position = mousePos;
+                }
 
-                    // put this plate above the other ones
-                    plates.Remove(plate);
-                    plates.AddFirst(plate);
+                // put this plate above the other ones
+                plates.Remove(plate);
+                plates.AddFirst(plate);
+
+                // update plate depth (wow, the inefficiency, but unity does unity, I guess)
+                int i = 0;
+                foreach (Plate p in plates)
+                {
+                    if (p.Depth == i) break; // assuming the rest is sorted when depths lines up.
+                    p.SetDepth(i);
+                    i++;
                 }
 
                 // no need to check further
