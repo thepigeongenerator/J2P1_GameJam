@@ -9,12 +9,6 @@ public class Plate : MonoBehaviour
     private float radius;
 
 
-    // called when the mouse is held or clicked
-    private void OnMouse(Vector2 mousePos)
-    {
-
-    }
-
     // checks whether a position falls on the plate
     private bool IsOnPlate(Vector2 pos)
     {
