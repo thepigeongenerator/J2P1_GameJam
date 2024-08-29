@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlateSpawner : MonoBehaviour
 {
     [SerializeField] Table table;
-    [SerializeField] int timer;
+    [SerializeField] float timer;
     bool coroutineDone = true;
     void Start()
     {
-        //table = GetComponent<Table>();
         coroutineDone = false;
         StartCoroutine(Delay(table.AddPlate, timer));
     }
     void Update()
     {
         SpawnCheck();
+        FixTimer();
     }
-    IEnumerator Delay(Action action, int time)
+    IEnumerator Delay(Action action, float time)
     {
         yield return new WaitForSeconds(time);
         coroutineDone = true;
@@ -25,8 +25,13 @@ public class PlateSpawner : MonoBehaviour
     }
     void SpawnCheck()
     {
-        if (!coroutineDone || table.PlateCount >= 15) return;
+        if (!coroutineDone) return;
         coroutineDone = false;
         StartCoroutine(Delay(table.AddPlate, timer));
+    }
+    private void FixTimer()
+    {
+        int score = PlayerPrefs.GetInt("Scoreint");
+        timer = MathF.Pow(0.99F, score);
     }
 }
