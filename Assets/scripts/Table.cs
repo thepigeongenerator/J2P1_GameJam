@@ -139,7 +139,9 @@ public class Table : MonoBehaviour
             else if (mouseUp == true)
             {
                 // remove the plate if it is no longer on the table when released
-                if (IsOnTable(heldPlate.transform.position) == false)
+                Vector3 closestToTable = transform.position - heldPlate.transform.position;
+                closestToTable.Normalize();
+                if (IsOnTable(heldPlate.transform.position + closestToTable) == false)
                     RemovePlate(heldPlate);
 
                 // reset held plate to "null"
