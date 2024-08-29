@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Table : MonoBehaviour
 {
+    [SerializeField] private ScreenShake screenShake; // a reference to the screenshake script
     [SerializeField] private Sprite plateSprite;    // contains the sprite containing the plate which'll be underneath the food
     [SerializeField] private Sprite[] foodSprites;  // contains the sprites of the different foods
     private LinkedList<Plate> plates;   // contains all plates, initialized in Awake() (using linked list for ease of moving nodes around)
@@ -69,6 +70,7 @@ public class Table : MonoBehaviour
     {
         plates.Remove(plate);
         Destroy(plate.gameObject);
+        screenShake.TriggerShake();
         score.ScorePlus();
     }
 
