@@ -1,64 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class aantalborden : MonoBehaviour
+public class AantalBorden : MonoBehaviour
 {
-    [SerializeField] TMP_Text plates;
-    [SerializeField] TMP_Text timer;
-    [SerializeField] Table table;
-    int PlatesCount;
-    int TimerCount = 3;
-    bool TimerOn = false;
+    [SerializeField] TMP_Text plates;// for the plates text
+    [SerializeField] TMP_Text timer;// for the timer
+    [SerializeField] Table table;// a reference to table script
+    int PlatesCount;// interger for how many plates there are on the table
+    int TimerCount = 3;// interger for the time that you have if there are to many plates on the table
+    bool TimerOn = false;// bool for if the timer is on or off
     // Start is called before the first frame update
     void Start()
     {
-        timer.enabled = false;
-    }
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            PlatesCount++;
-        }
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-            PlatesCount--;
-        }
+        timer.enabled = false;//set the timer text to be not seen
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        plates.text = "plates:" + table.PlateCount.ToString();
-        timer.text = "Time: " + TimerCount.ToString();
-        if (table.PlateCount != 0)
+        plates.text = "plates:" + table.PlateCount.ToString();// set the everything to text and sets platecount to string
+        timer.text = "Time: " + TimerCount.ToString();// is the same as the one above
+        if (table.PlateCount != 0)//checks if plate count isn't 0
         {
-            if (table.PlateCount >= 51)
+            if (table.PlateCount >= 15)// checks if platecount is same or higher then 15
             {
 
-                if (TimerOn == false)
+                if (TimerOn == false)//checks if timeron bool on false is
                 {
-                    timer.enabled = true;
-                    TimerOn = true;
-                    Invoke("WaitTimeTimer", 1);
+                    timer.enabled = true;// make the timer visible
+                    TimerOn = true;//sets the bool to true
+                    Invoke("WaitTimeTimer", 1);// invoke the WaitTimeTimer method after 1 second
                 }
             }
-            if (table.PlateCount < 10)
+            if (table.PlateCount < 15)// checks if table count is lower then 15
             {
-                TimerCount = 3;
-                timer.enabled = false;
+                TimerCount = 3;//set the timercount back to 3
+                timer.enabled = false;//makes the timer invisible again
             }
         }
     }
     void WaitTimeTimer()
     {
-        TimerOn = false;
-        TimerCount--;
-        if (TimerCount == 0)
+        TimerOn = false;//set timeron to false
+        TimerCount--;// removes 1 from timercount
+        if (TimerCount == 0)// checks if timercount is 0
         {
-            SceneManager.LoadScene("End Screen");
+            SceneManager.LoadScene("End Screen");//loads end screen scene
         }
     }
 }
