@@ -196,13 +196,4 @@ public class Table : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, new Vector3(w, h, 0));
     }
-
-    // DEBUG: remove in final
-    private void Start()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            AddPlate();
-        }
-    }
 }
