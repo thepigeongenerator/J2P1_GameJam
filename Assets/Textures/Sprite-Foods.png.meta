@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d583793f9b8e1024d9d22cfa4e8f49cb
+guid: 7bf86251cc2e02f4b83e95cf079c67bd
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -62,8 +62,26 @@ TextureImporter:
   - first:
       213: 5501036979033065567
     second: Sprite-Foods_19
+  - first:
+      213: -6789970699466890936
+    second: Sprite-Foods_20
+  - first:
+      213: -7624923776180756123
+    second: Sprite-Foods_21
+  - first:
+      213: 2524671972432529068
+    second: Sprite-Foods_22
+  - first:
+      213: -4482014495175606618
+    second: Sprite-Foods_23
+  - first:
+      213: -314838234896815413
+    second: Sprite-Foods_24
+  - first:
+      213: 2620389805745644366
+    second: Sprite-Foods_25
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,13 +149,12 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -150,20 +167,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -572,10 +575,10 @@ TextureImporter:
       name: Sprite-Foods_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 33
-        height: 34
+        x: 7
+        y: 166
+        width: 19
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -585,6 +588,132 @@ TextureImporter:
       bones: []
       spriteID: f58cd879cfb975c40800000000000000
       internalID: 5501036979033065567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_20
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 168
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84127f6af9d25c1a0800000000000000
+      internalID: -6789970699466890936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 561e0516934de2690800000000000000
+      internalID: -7624923776180756123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_22
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 169
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca6c93b58cf690320800000000000000
+      internalID: 2524671972432529068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_23
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 165
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aef7e8309facc1c0800000000000000
+      internalID: -4482014495175606618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_24
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 171
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcaa34f1b4871abf0800000000000000
+      internalID: -314838234896815413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-Foods_25
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 159
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e43268815ae7d5420800000000000000
+      internalID: 2620389805745644366
       vertices: []
       indices: 
       edges: []
@@ -613,6 +742,12 @@ TextureImporter:
       Sprite-Foods_18: -9009122122620508951
       Sprite-Foods_19: 5501036979033065567
       Sprite-Foods_2: -8142747859641157741
+      Sprite-Foods_20: -6789970699466890936
+      Sprite-Foods_21: -7624923776180756123
+      Sprite-Foods_22: 2524671972432529068
+      Sprite-Foods_23: -4482014495175606618
+      Sprite-Foods_24: -314838234896815413
+      Sprite-Foods_25: 2620389805745644366
       Sprite-Foods_3: -1833619136821403364
       Sprite-Foods_4: -4987221123931472541
       Sprite-Foods_5: -5912724077821830370
