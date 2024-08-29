@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class ScreenShake : MonoBehaviour
 {
-    // Transform of the camera
-    public Transform transform;
     //Duration of the shake effect
-    public float shakeDuration;
+    public float shakeDuration = 0.0F;
     // Strenth for the shake.
-    private float shakeStrength = 0.1f;
+    public float shakeStrength = 0.1f;
     // A measure of how fast it will fade
-    private float fadingSpeed = 5.0f;
+    public float fadingSpeed = 5.0f;
     // The initial position of the camera
     Vector3 initialPosition;
-    void Awake()
-    {
-        if (transform == null)
-        {
-            transform = GetComponent(typeof(Transform)) as Transform;
-        }
-    }
+
     void OnEnable()
     {
         initialPosition = transform.localPosition;
     }
+
     void Update()
     {
         if (shakeDuration > 0)
