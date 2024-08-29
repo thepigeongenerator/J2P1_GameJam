@@ -141,6 +141,7 @@ public class Table : MonoBehaviour
                 // remove the plate if it is no longer on the table when released
                 Vector3 closestToTable = transform.position - heldPlate.transform.position;
                 closestToTable.Normalize();
+                closestToTable *= plateDiameter / 2.0F;
                 if (IsOnTable(heldPlate.transform.position + closestToTable) == false)
                     RemovePlate(heldPlate);
 
