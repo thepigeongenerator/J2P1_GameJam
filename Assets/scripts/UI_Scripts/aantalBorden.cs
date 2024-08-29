@@ -7,7 +7,6 @@ public class AantalBorden : MonoBehaviour
     [SerializeField] TMP_Text plates;// for the plates text
     [SerializeField] TMP_Text timer;// for the timer
     [SerializeField] Table table;// a reference to table script
-    int PlatesCount;// interger for how many plates there are on the table
     int TimerCount = 3;// interger for the time that you have if there are to many plates on the table
     bool TimerOn = false;// bool for if the timer is on or off
     // Start is called before the first frame update
