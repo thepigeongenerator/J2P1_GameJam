@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 318179411}
   - component: {fileID: 318179410}
   - component: {fileID: 318179412}
+  - component: {fileID: 318179413}
   m_Layer: 0
   m_Name: scenemanager
   m_TagString: Untagged
@@ -183,6 +184,20 @@ MonoBehaviour:
   plates: {fileID: 1047965323}
   timer: {fileID: 743642728}
   table: {fileID: 1600025085}
+--- !u!114 &318179413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318179409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee52165fbdae567409933966b32a1e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table: {fileID: 1600025085}
+  timer: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
