@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -66,9 +67,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -888,26 +886,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952390c5b50bbfb208ed065780f84110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plateSprite: {fileID: -8276236921023232199, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
+  plateSprite: {fileID: -8276236921023232199, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
   foodSprites:
-  - {fileID: 4100433063412080352, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -8142747859641157741, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -1833619136821403364, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -4987221123931472541, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -5912724077821830370, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 1689176615973935424, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 3587709249840516047, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 9022788666191104462, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 3732974297524711248, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -2220624533159441745, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -9173399092163677867, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -4648983412287526239, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 2987474710693114379, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 7954613362743766768, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 8527170943636913993, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 8272962557524158623, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: 6210425276754597619, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
-  - {fileID: -9009122122620508951, guid: d583793f9b8e1024d9d22cfa4e8f49cb, type: 3}
+  - {fileID: 4100433063412080352, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -8142747859641157741, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -1833619136821403364, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -5912724077821830370, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 1689176615973935424, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 3587709249840516047, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 9022788666191104462, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 3732974297524711248, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -2220624533159441745, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -9173399092163677867, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -4648983412287526239, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 2987474710693114379, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 7954613362743766768, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 8527170943636913993, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 8272962557524158623, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 6210425276754597619, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -9009122122620508951, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 5501036979033065567, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -6789970699466890936, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -7624923776180756123, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: 2524671972432529068, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -4482014495175606618, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
+  - {fileID: -314838234896815413, guid: 7bf86251cc2e02f4b83e95cf079c67bd, type: 3}
 --- !u!4 &1600025086
 Transform:
   m_ObjectHideFlags: 0
