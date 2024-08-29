@@ -32,7 +32,6 @@ public class Table : MonoBehaviour
             float minY = TablePos.y + (plateDiameter * 2);
             float maxX = TablePos.x + width - (plateDiameter * 2);
             float maxY = TablePos.y + height - (plateDiameter * 2);
-            plateObj.transform.SetParent(transform);
             plateObj.transform.position = new Vector2(
                 (float)rand.NextDouble() * (maxX - minX) + minX,
                 (float)rand.NextDouble() * (maxY - minY) + minY);
@@ -44,7 +43,7 @@ public class Table : MonoBehaviour
         // add plate
         var plate = plateObj.AddComponent<Plate>();
         plate.table = this;
-        plate.SetDepth(PlateCount);
+        plate.SetDepth(-1); // if set to 0 plate depths won't update correctly
 
         // add food
         plate.food = new("Food");
