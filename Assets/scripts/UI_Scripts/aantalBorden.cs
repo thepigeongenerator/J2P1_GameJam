@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class aantalborden : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class aantalborden : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        timer.enabled = false;
     }
     void Update()
     {
@@ -30,21 +31,25 @@ public class aantalborden : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        plates.text = "plates:" + PlatesCount.ToString();
+        plates.text = "plates:" + table.PlateCount.ToString();
         timer.text = "Time: " + TimerCount.ToString();
-        if (table.PlateCount >= 10)
+        if (table.PlateCount != 0)
         {
-            timer.enabled = true;
-            if (TimerOn == false)
+            if (table.PlateCount >= 51)
             {
-                TimerOn = true;
-                Invoke("WaitTimeTimer", 1);
+
+                if (TimerOn == false)
+                {
+                    timer.enabled = true;
+                    TimerOn = true;
+                    Invoke("WaitTimeTimer", 1);
+                }
             }
-        }
-        if (table.PlateCount < 10)
-        {
-            TimerCount = 3;
-            timer.enabled = false;
+            if (table.PlateCount < 10)
+            {
+                TimerCount = 3;
+                timer.enabled = false;
+            }
         }
     }
     void WaitTimeTimer()
@@ -53,7 +58,7 @@ public class aantalborden : MonoBehaviour
         TimerCount--;
         if (TimerCount == 0)
         {
-            TimerOn = true;
+            SceneManager.LoadScene("End Screen");
         }
     }
 }

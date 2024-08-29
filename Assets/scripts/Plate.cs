@@ -2,15 +2,17 @@ using System;
 using UnityEngine;
 public class Plate : MonoBehaviour
 {
-    public Table table;
-    public GameObject food;
-    private bool isHeld = false;
-    private bool isEmpty = false;
-    private float radius;
+    public Table table;             // the table that the plate is on
+    public GameObject food;         // food gameObject child
+    private bool isEmpty = false;   // whether the plate is empty
+    private float radius;           // radius of the plate to check whether a point falls on it, is set by the texture's height
+    private int depth;              // render depth of the plate. Is set to the Z value.
 
+    public bool IsEmpty => isEmpty;
+    public int Depth => depth;
 
     // checks whether a position falls on the plate
-    private bool IsOnPlate(Vector2 pos)
+    public bool IsOnPlate(Vector2 pos)
     {
         // get the relative position as a non-negative
         Vector2 rpos = new(transform.position.x - pos.x, transform.position.y - pos.y);
@@ -25,6 +27,23 @@ public class Plate : MonoBehaviour
         return rpos.x < platePos.x && rpos.y < platePos.y;
     }
 
+    // empties the plate (can only be called once, otherwise causes unpredictable behaviour)
+    public void EmptyPlate()
+    {
+        isEmpty = true;
+
+        // destroy the food object and remove the reference to it.
+        Destroy(food);
+        food = null;
+    }
+
+    // for setting the rendering depth of the plate
+    public void SetDepth(int depth)
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, depth);
+        this.depth = depth;
+    }
+
     // when the object is loaded
     private void Awake()
     {
@@ -32,43 +51,6 @@ public class Plate : MonoBehaviour
 
         // update the renderer and calculate the radius (assuming all sprites are the same size)
         radius = render.size.y / 2.0F;
-    }
-
-    // called on every frame upate
-    private void Update()
-    {
-        bool mousePressed = Input.GetMouseButton(0);
-        bool mouseDown = Input.GetMouseButtonDown(0);
-        bool mouseUp = Input.GetMouseButtonUp(0);
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (mouseDown && IsOnPlate(mousePos))
-        {
-            if (isEmpty)
-            {
-                // if the plate is empty, set the plate to be held
-                isHeld = true;
-                return;
-            }
-            // make the sprite empty if the plate is clicked
-            isEmpty = true;
-            Destroy(food);
-        }
-        else if (isEmpty == true && isHeld == true && mousePressed)
-        {
-            // move the plate to the mouse's position while it is being held and empty
-            transform.position = mousePos;
-        }
-        else if (isHeld == true && mouseUp)
-        {
-            // make the mouse no longer held when the mouse is released
-            isHeld = false;
-        }
-        else if (table.IsOnTable(transform.position) == false)
-        {
-            // remove the plate if
-            table.RemovePlate(this);
-        }
     }
 
     // draws the hitbox outline in the editor when the object is selected
